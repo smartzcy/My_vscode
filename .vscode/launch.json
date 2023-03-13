@@ -1,0 +1,132 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+<<<<<<< HEAD
+=======
+            "name": "L5_45",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_45",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_27",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_27",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_36",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_36",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_33",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_33",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_32",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_32",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_26",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_26",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_25",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_25",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_21",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_21",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_19",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_19",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_17",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_17",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "L5_7",
+            "request": "launch",
+            "mainClass": "Lesson3.L5_7",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+>>>>>>> c2a951c (Text3)
+            "name": "ComputeExpression",
+            "request": "launch",
+            "mainClass": "Lesson1.ComputeExpression",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "WelcomeWithThreeMessages",
+            "request": "launch",
+            "mainClass": "Lesson1.WelcomeWithThreeMessages",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "type": "java",
+            "name": "Welcome",
+            "request": "launch",
+            "mainClass": "Lesson1.Welcome",
+            "projectName": "VScode_38f799e3"
+        },
+        {
+            "name": "C/C++: g++.exe 生成和调试活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "D:\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: g++.exe 生成活动文件"
+        }
+    ],
+    "version": "2.0.0"
+}
