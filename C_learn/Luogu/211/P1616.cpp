@@ -13,5 +13,5 @@ int main() {
         for (int j = w[i]; j <= t; j++)
             f[j] = max(f[j], f[j - w[i]] + v[i]);
 
-    cout << f[m] << endl;
+    cout << f[t] * 5 << endl;
 }
