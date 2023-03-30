@@ -1,16 +1,8 @@
 #include <iostream>
 using namespace std;
-int f(int);
-int any_function(int (*pf)(int));
 int main() {
-    cout << any_function(f) << endl;
+    int a[10] = {1, 2, 3, 4, 5, 6, 7};
+    int *p = a;
+    cout << *++p;
     return 0;
-}
-int f(int i) {
-    return i * i + i - 12;
-}
-int any_function(int (*pf)(int)) {
-    int n = 0;
-    while (pf(n)) ++n;
-    return n;
 }
