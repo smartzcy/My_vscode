@@ -94,5 +94,17 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Algorithm_java/test1/lib/javafx.base.jar",
+        "Algorithm_java/test1/lib/javafx.controls.jar",
+        "Algorithm_java/test1/lib/javafx.fxml.jar",
+        "Algorithm_java/test1/lib/javafx.graphics.jar",
+        "Algorithm_java/test1/lib/javafx.media.jar",
+        "Algorithm_java/test1/lib/javafx.swing.jar",
+        "Algorithm_java/test1/lib/javafx.web.jar",
+        "Algorithm_java/test1/lib/javafx-swt.jar"
+    ]
 }
