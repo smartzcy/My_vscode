@@ -2,8 +2,6 @@ package Lesson8;
 
 import java.util.ArrayList;
 
-import javax.swing.SpringLayout;
-
 public class TestArrayList {
     public static void main(String[] args) {
         ArrayList<String> cityList = new ArrayList<>();

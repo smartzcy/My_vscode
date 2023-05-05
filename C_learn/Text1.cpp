@@ -1,35 +1,73 @@
 #include <iostream>
-#include <algorithm>
-#include <cstring>
-#define len 15
+#include <string>
 using namespace std;
-const int INF = 1e9;
-const int N = 1e5 + 10;
-int n, m;
-struct stu {
-    int no;
-    double math, physics, english;
-    char name[100];
-} st[100];
-void searchna(char *name, int t) {
-    int i;
-    for (i = 0; i < t; i++) {
-        if (strcmp(st[i].name, name) == 0) {
-            printf("学号\t姓名\t数学\t物理\t英语\n");
-            printf("%d\t%s\t%.2lf\t%.2lf\t%.2lf\n", st[i].no, st[i].name, st[i].math, st[i].physics, st[i].english);
-        }
+class Account {
+public:
+    Account() {
+        string id;
+        string name;
+        double balance;
+        double annualInterestRate;
     }
-}
+    Account(string newId, string newName, double newBalance, double newAnnualInterestRate) {
+        id = newId;
+        name = newName;
+        balance = newBalance;
+        annualInterestRate = newAnnualInterestRate;
+    }
+    void setId(string newId) {
+        id = newId;
+    }
+    void setName(string newName) {
+        name = newName;
+    }
+    void setBalance(double newBalance) {
+        balance = newBalance;
+    }
+    void setAnnualInterestRate(double newAnnualInterestRate) {
+        annualInterestRate = newAnnualInterestRate;
+    }
+    string getId() const {
+        return id;
+    }
+    string getName() const {
+        return name;
+    }
+    double getBalance() const {
+        return balance;
+    }
+    double getAnnualInterestRate() const {
+        return annualInterestRate;
+    }
+    void withdraw(double a) {
+        balance -= a;
+    }
+    void deposit(double b) {
+        balance += b;
+    }
+    void print() {
+        cout << id << "\n"
+             << name << "\n"
+             << balance + b - a << "\n"
+             << annualInterestRate / 2;
+    }
+
+private:
+    string id;
+    string name;
+    double balance;
+    double annualInterestRate;
+};
+
 int main() {
-    for (int i = 0; i < 2; i++) {
-        int num;
-        char ch[100];
-        scanf("%d", &num);
-        scanf("%s", ch);
-        st[i].no = num;
-        strcpy(st[i].name, ch);
-    }
-    char s[100];
-    scanf("%s", s);
-    searchna(s, 2);
+    string id;
+    string name;
+    double balance;
+    double annualInterestRate;
+    cin >> id >> name >> balance >> annualInterestRate;
+    Account account(id, name, balance, annualInterestRate);
+    account.withdraw(2500);
+    account.deposit(3000);
+    account.print();
+    return 0;
 }
