@@ -1,114 +1,47 @@
-class Employee {
-protected:
-    string name; // 姓名
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <algorithm>
 
-public:
-    Employee(string n) :
-        name(n) {
-    }                              // 有参构造函数
-    virtual void show() = 0;       // 纯虚函数
-    virtual double earnings() = 0; // 纯虚函数
-    string getName() {
-        return name;
+using namespace std;
+
+int main() {
+    // 读取输入文件数据
+    ifstream fin("gpa.dat");
+    string line;
+    vector<pair<string, double>> students;
+
+    while (getline(fin, line)) {
+        if (line.empty()) continue;
+        string name = line;
+        getline(fin, line);
+        if (line.empty()) continue;
+
+        int n = stoi(line);
+        double total_grade = 0;
+        double total_credit = 0;
+        for (int i = 0; i < n; ++i) {
+            getline(fin, line);
+            if (line.empty()) continue;
+            int credit = stoi(line.substr(0, 1));
+            double grade = stod(line.substr(2));
+            total_grade += credit * grade;
+            total_credit += credit;
+        }
+        double gpa = total_credit > 0 ? total_grade / total_credit : 0;
+        students.emplace_back(name, gpa);
     }
-};
 
-// 老板类
-class Boss : public Employee {
-private:
-    double weeklySalary; // 固定周工资
-
-public:
-    Boss(string n, double s) :
-        Employee(n), weeklySalary(s) {
-    } // 有参构造函数
-    void setWeeklySalary(double s) {
-        weeklySalary = s;
-    } // 更改器函数
-    void show() {
-        cout << "Boss: " << name << endl;
-        cout << "Earned: $" << weeklySalary << endl;
+    // 计算加权平均分的最大值和最小值
+    double max_gpa = 0;
+    double min_gpa = 4.0;
+    for (const auto &student : students) {
+        cout << "GPA for " << student.first << " = " << student.second << endl;
+        max_gpa = max(max_gpa, student.second);
+        min_gpa = min(min_gpa, student.second);
     }
-    double earnings() {
-        return weeklySalary;
-    } // 计算周收入
-};
-
-// 销售员类
-class CommissionWorker : public Employee {
-private:
-    double salary;     // 工资
-    double commission; // 销售提成
-    int quantity;      // 销售数量
-
-public:
-    CommissionWorker(string n, double s, double c, int q) :
-        Employee(n), salary(s), commission(c), quantity(q) {
-    } // 有参构造函数
-    void setSalary(double s) {
-        salary = s;
-    } // 更改器函数
-    void setCommission(double c) {
-        commission = c;
-    } // 更改器函数
-    void setQuantity(int q) {
-        quantity = q;
-    } // 更改器函数
-    void show() {
-        cout << "Commission Worker: " << name << endl;
-        cout << "Earned: $" << salary << endl;
-    }
-    double earnings() {
-        return salary + salary * commission / 100 * quantity;
-    } // 计算收入
-};
-
-// 计件工人类
-class PieceWorker : public Employee {
-private:
-    double wagePerPiece; // 每件产品工资
-    int quantity;        // 生产数量
-
-public:
-    PieceWorker(string n, double w, int q) :
-        Employee(n), wagePerPiece(w), quantity(q) {
-    } // 有参构造函数
-    void setWage(double w) {
-        wagePerPiece = w;
-    } // 更改器函数
-    void setQuantity(int q) {
-        quantity = q;
-    } // 更改器函数
-    void show() {
-        cout << "Piece Worker: " << name << endl;
-        cout << "Earned: $" << wagePerPiece << endl;
-    }
-    double earnings() {
-        return wagePerPiece * quantity;
-    } // 计算收入
-};
-
-// 小时工人类
-class HourlyWorker : public Employee {
-private:
-    double wage;  // 小时工资
-    double hours; // 工作时数
-
-public:
-    HourlyWorker(string n, double w, double h) :
-        Employee(n), wage(w), hours(h) {
-    } // 有参构造函数
-    void setWage(double w) {
-        wage = w;
-    } // 更改器函数
-    void setHours(double h) {
-        hours = h;
-    } // 更改器函数
-    void show() {
-        cout << "Hourly Worker: " << name << endl;
-        cout << "Earned: $" << wage << endl;
-    }
-    double earnings() {
-        return wage * hours + (hours > 40 ? (hours - 40) * wage * 0.5 : 0);
-    } // 计算收入（含加班工资）
-};
+    cout << "max GPA = " << max_gpa << endl;
+    cout << "min GPA = " << min_gpa << endl;
+    return 0;
+}

@@ -1,73 +1,48 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
 using namespace std;
-class Account {
-public:
-    Account() {
-        string id;
-        string name;
-        double balance;
-        double annualInterestRate;
+int countPrimeFactors(int n) {
+    int count = 0;
+    for (int i = 2; i <= sqrt(n); ++i) {
+        while (n % i == 0) {
+            count++;
+            n /= i;
+        }
     }
-    Account(string newId, string newName, double newBalance, double newAnnualInterestRate) {
-        id = newId;
-        name = newName;
-        balance = newBalance;
-        annualInterestRate = newAnnualInterestRate;
+    if (n > 1) {
+        count++;
     }
-    void setId(string newId) {
-        id = newId;
-    }
-    void setName(string newName) {
-        name = newName;
-    }
-    void setBalance(double newBalance) {
-        balance = newBalance;
-    }
-    void setAnnualInterestRate(double newAnnualInterestRate) {
-        annualInterestRate = newAnnualInterestRate;
-    }
-    string getId() const {
-        return id;
-    }
-    string getName() const {
-        return name;
-    }
-    double getBalance() const {
-        return balance;
-    }
-    double getAnnualInterestRate() const {
-        return annualInterestRate;
-    }
-    void withdraw(double a) {
-        balance -= a;
-    }
-    void deposit(double b) {
-        balance += b;
-    }
-    void print() {
-        cout << id << "\n"
-             << name << "\n"
-             << balance + b - a << "\n"
-             << annualInterestRate / 2;
-    }
-
-private:
-    string id;
-    string name;
-    double balance;
-    double annualInterestRate;
-};
-
+    return count;
+}
 int main() {
-    string id;
-    string name;
-    double balance;
-    double annualInterestRate;
-    cin >> id >> name >> balance >> annualInterestRate;
-    Account account(id, name, balance, annualInterestRate);
-    account.withdraw(2500);
-    account.deposit(3000);
-    account.print();
+    int m;
+    cin >> m;
+
+    vector<int> container;
+
+    while (m--) {
+        container.clear();
+        for (int i = 0; i < 10; ++i) {
+            int n;
+            cin >> n;
+            container.push_back(n);
+        }
+        sort(container.begin(), container.end(), [](int a, int b) {
+            int countA = countPrimeFactors(a);
+            int countB = countPrimeFactors(b);
+
+            if (countA != countB) {
+                return countA > countB;
+            } else {
+                return a > b;
+            }
+        });
+        cout << container.front() << " " << container.back() << endl;
+        container.erase(container.begin());
+        container.pop_back();
+    }
+
     return 0;
 }
