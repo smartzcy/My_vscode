@@ -5,25 +5,31 @@ const int INF = 1e9;
 const int N = 1e5 + 10;
 long long a, b, n, m, h;
 bool check(int x) {
-    if (x <= n) return 0;
-    int s1 = n / b * (b - a);
-    int s2 = x / b * (h - b);
-    if (s1 + s2 < n + m - x) return 0;
-    return 1;
+    int num1 = n / b;
+    int num = num1 * (h - a);
+    int l = x - num1 * b;
+    int num2 = l / b;
+    num += num2 * (h - b);
+    if (num >= n + m - x) return 1;
+    return 0;
 }
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
     int T;
-    scanf("%d", &T);
+    cin >> T;
     while (T--) {
-        scanf("%d %d %d %d %d", &a, &b, &n, &m, &h);
-        int l = 1, r = n + m + 1;
-        while (l < r) {
-            int mid = l + r >> 1;
+        cin >> a >> b >> n >> m >> h;
+        long long l = n + 1, r = n + m;
+        while (l <= r) {
+            long long mid = l + r >> 1;
             if (check(mid))
-                r = mid;
+                r = mid - 1;
             else
                 l = mid + 1;
         }
-        printf("%d\n", l);
+        cout << r + 1 << endl;
     }
+    return 0;
 }
