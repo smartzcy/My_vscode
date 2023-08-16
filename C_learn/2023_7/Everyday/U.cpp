@@ -6,17 +6,17 @@
 using namespace std;
 const int INF = 1e9;
 const int N = 2e5 + 10;
-int n, T;
-int a[N];
+long long n, T;
+long long a[N];
 bool cmp(int x, int y) {
     return x < y;
 }
-priority_queue<int> q;
+priority_queue<long long> q;
 int main() {
     cin >> T;
     while (T--) {
         cin >> n;
-        int tot = 0;
+        long long tot = 0;
         for (int i = 1; i <= n; i++) {
             cin >> a[i];
             tot += a[i];
@@ -24,7 +24,7 @@ int main() {
         q.push(tot);
         sort(a + 1, a + n + 1, cmp);
         while (n > 0) {
-            int k = q.top();
+            long long k = q.top();
             if (k == a[n]) {
                 n--;
             } else if (k < a[n]) {
