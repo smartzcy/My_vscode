@@ -38,10 +38,7 @@ int main() {
     cout << ans << endl;
     return 0;
 }
-
 ```
-
-
 
 ## 快速幂 + 龟速乘
 
@@ -84,7 +81,6 @@ int ask(int l, int r) {
     int k = __lg(r - l + 1);
     return max(f[l][k], f[r - (1 << k) + 1][k]);
 }
-
 ```
 
 ## 数学
@@ -136,7 +132,6 @@ long long solve(long long r, long long n) {
 long long que(long long L, long long R, long long k) {
     return solve(R, k) - solve(L - 1, k);
 }
-
 ```
 
 ### 指数取模
@@ -216,7 +211,6 @@ void init() {
         f[i] = 1ll * f[i - 1] * i % mod;
     }
 }
-
 ```
 
 ### 判断质数
@@ -232,8 +226,6 @@ int isPrime(int n) { // 返回1表示判断为质数，0为非质数，在此没
     }
     return 1;
 }
-
-
 ```
 
 ### 欧拉筛
@@ -248,7 +240,6 @@ void prime(int n) {
         }
     }
 }
-
 ```
 
 ### 点到线段的最短距离
@@ -513,7 +504,10 @@ struct Line {
         return Point(2 * q.x - p.x, 2 * q.y - p.y);
     }
 };
-
 ```
 
+## 大数分解质因数
 
+```cpp
+
+```
