@@ -2,88 +2,46 @@
 #include <algorithm>
 #include <vector>
 #include <map>
-#include <queue>
-#include <cstring>
+#include <cmath>
+#define int long long
 using namespace std;
 const int INF = 1e9;
-const int N = 2e5 + 10;
+const int N = 1e6 + 10;
 int n, m;
-vector<pair<int, char>> adj[N];
-int dis[N];
-int pre[N];
-bool vis[N];
-vector<int> road;
-vector<char> ans;
-void bfs(int st) {
-    vis[st] = 1;
-    queue<pair<int, int>> q;
-    q.push({st, 0});
-    dis[st] = 0;
-    while (!q.empty()) {
-        pair<int, int> now = q.front();
-        q.pop();
-        int from = now.first;
-        for (auto i : adj[from]) {
-            int v = i.first;
-            if (!vis[v]) {
-                dis[v] = now.second + 1;
-                vis[v] = 1;
-                q.push({v, dis[v]});
-            }
+vector<int> ji, ou;
+vector<int> v;
+string s;
+signed main() {
+    cin >> n;
+    m = n;
+    for (int i = 1; i <= n; i++) v.push_back(i);
+    for (int i = 0; i <= log2(n); i++) {
+        ou.clear();
+        ji.clear();
+        for (auto x : v) {
+            cout << "! " << x << " " << i << endl;
+            int num;
+            cin >> num;
+            if (num == 0)
+                ou.push_back(x);
+            else
+                ji.push_back(x);
         }
-    }
-}
-void search(int st) {
-    vector<int> vec;
-    vec.push_back(st);
-    for (int i = 0; i < dis[1]; i++) {
-        vector<int> add;
-        int minn = 1000;
-        for (auto u : vec) {
-            for (auto v : adj[u]) {
-                if (dis[v.first] + 1 == dis[u]) {
-                    minn = min(minn, (int)(v.second));
-                }
-            }
+        v.clear();
+        if (ou.size() == m / 2 + 1) {
+            s += '1';
+            for (auto x : ji) v.push_back(x);
+        } else {
+            s += '0';
+            for (auto x : ou) v.push_back(x);
         }
-        for (auto u : vec) {
-            for (auto v : adj[u]) {
-                if (dis[v.first] + 1 == dis[u] && v.second == minn && !vis[v.first]) {
-                    pre[v.first] = u;
-                    add.push_back(v.first);
-                    vis[v.first] = 1;
-                }
-            }
-        }
-        vec.clear();
-        vec = add;
-        ans.push_back(char(minn));
+        m /= 2;
     }
-}
-void output(int st) {
-    if (pre[st] != 0)
-        output(pre[st]);
-    cout << st << " ";
-}
-int main() {
-    cin >> n >> m;
-    for (int i = 0; i < m; i++) {
-        int u, v;
-        char ch;
-        cin >> u >> v >> ch;
-        adj[u].push_back({v, ch});
-        adj[v].push_back({u, ch});
+    int ans = 0;
+    int num = 1;
+    for (auto i : s) {
+        ans += num * (i - '0');
+        num *= 2;
     }
-    for (int i = 0; i <= n; i++) {
-        dis[i] = INF;
-    }
-    bfs(n);
-    memset(vis, 0, sizeof(vis));
-    search(1);
-    cout << dis[1] << endl;
-    output(n);
-    cout << endl;
-    for (auto i : ans) {
-        cout << i;
-    }
+    cout << "! " << ans << endl;
 }
